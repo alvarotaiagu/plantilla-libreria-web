@@ -1,0 +1,448 @@
+/* ==========================================================================
+   Librería Cuadratín (SITIO DE DEMOSTRACIÓN, negocio ficticio)
+   Concepto: «Lomos». Un libro se elige por el lomo, así que la estantería es
+   el sistema visual: cantos de colores saturados sobre pared oscura, y una
+   balda que responde al dedo como responde una de verdad.
+   ========================================================================== */
+
+:root {
+  --pared: #23261F;
+  --pared-clara: #2C3029;
+  --crema: #F2EDE1;
+  --crema-70: rgba(242, 237, 225, 0.7);
+  --crema-45: rgba(242, 237, 225, 0.45);
+  --crema-14: rgba(242, 237, 225, 0.14);
+  --rojo: #D6402F;
+  --mostaza: #E0A21B;
+  --azul: #2E5FA3;
+
+  --display: "Familjen Grotesk", "Trebuchet MS", sans-serif;
+  --texto: "Karla", system-ui, sans-serif;
+  --mono: "Courier Prime", "Courier New", monospace;
+
+  --marco: clamp(1rem, 4vw, 4rem);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--pared);
+  color: var(--crema);
+  font-family: var(--texto);
+  font-size: clamp(1rem, 0.96rem + 0.2vw, 1.08rem);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img, svg { max-width: 100%; }
+img { height: auto; display: block; }
+
+h1, h2, h3 { font-family: var(--display); font-weight: 700; line-height: 1.04; letter-spacing: -0.02em; margin: 0; }
+p { margin: 0 0 1em; }
+a { color: inherit; }
+
+::selection { background: var(--mostaza); color: var(--pared); }
+:focus-visible { outline: 3px solid var(--mostaza); outline-offset: 3px; }
+
+.visualmente-oculta {
+  position: absolute !important;
+  width: 1px; height: 1px; margin: -1px; padding: 0; border: 0;
+  clip-path: inset(50%); overflow: hidden; white-space: nowrap;
+}
+
+.salto {
+  position: fixed; top: 0.75rem; left: 0.75rem; z-index: 300;
+  transform: translateY(-200%);
+  background: var(--mostaza); color: var(--pared);
+  padding: 0.7rem 1.1rem; border-radius: 3px;
+  font-family: var(--mono); font-size: 0.78rem; text-decoration: none;
+}
+.salto:focus { transform: none; }
+
+section[id] { scroll-margin-top: clamp(4.5rem, 10vh, 6rem); }
+
+.kicker, .indice {
+  font-family: var(--mono); font-size: 0.78rem;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--mostaza); margin: 0 0 1.1rem;
+}
+.parrafo { color: var(--crema-70); max-width: 56ch; }
+.seccion__cabeza { max-width: 64ch; }
+.seccion__cabeza h2 { font-size: clamp(1.9rem, 1.1rem + 3vw, 3.4rem); margin-bottom: 1rem; }
+.aviso { font-family: var(--mono); font-size: 0.74rem; line-height: 1.8; color: var(--crema-45); margin: 1.8rem 0 0; max-width: 84ch; }
+
+/* ── Botones ───────────────────────────────────────────────────────────── */
+.boton {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--mono); font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 0.02em; text-decoration: none;
+  padding: 0.8rem 1.4rem;
+  border: 2px solid var(--crema); border-radius: 3px;
+  background: transparent; color: var(--crema); cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.boton--crema { background: var(--crema); color: var(--pared); }
+.boton--crema:hover { background: var(--mostaza); border-color: var(--mostaza); }
+.boton--rojo { background: var(--rojo); border-color: var(--rojo); color: var(--crema); }
+.boton--rojo:hover { background: var(--crema); border-color: var(--crema); color: var(--pared); }
+.boton--linea:hover { background: var(--crema); color: var(--pared); }
+
+/* ── Cabecera ──────────────────────────────────────────────────────────── */
+.cabecera {
+  position: fixed; inset: 0 0 auto 0; z-index: 90;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  padding: 0.85rem var(--marco);
+  background: color-mix(in srgb, var(--pared) 92%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+.cabecera.esta-pegada { border-bottom-color: var(--crema-14); }
+.marca { display: inline-flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+.marca__icono { width: 30px; height: auto; color: var(--mostaza); flex: none; }
+.marca__texto { font-family: var(--display); font-weight: 700; font-size: 1.2rem; letter-spacing: -0.02em; }
+
+.nav { display: flex; align-items: center; gap: clamp(0.8rem, 1.8vw, 2rem); }
+.nav ul { display: flex; gap: clamp(0.7rem, 1.6vw, 1.4rem); list-style: none; margin: 0; padding: 0; }
+.nav a {
+  font-family: var(--mono); font-size: 0.78rem; text-decoration: none;
+  border-bottom: 2px solid transparent; padding-bottom: 2px;
+}
+.nav a:hover { border-bottom-color: var(--mostaza); }
+.nav__cta { padding: 0.55rem 1rem; }
+
+.hamburguesa {
+  display: none; align-items: center; gap: 0.5rem;
+  background: none; border: 2px solid var(--crema); border-radius: 3px;
+  padding: 0.5rem 0.9rem; cursor: pointer; color: inherit;
+  font-family: var(--mono); font-size: 0.76rem;
+}
+.hamburguesa__lineas { display: grid; gap: 4px; width: 18px; }
+.hamburguesa__lineas i { display: block; height: 2px; background: currentColor; transition: transform 0.3s ease; }
+.hamburguesa[aria-expanded="true"] .hamburguesa__lineas i:first-child { transform: translateY(3px) rotate(45deg); }
+.hamburguesa[aria-expanded="true"] .hamburguesa__lineas i:last-child { transform: translateY(-3px) rotate(-45deg); }
+
+/* ── Hero y la balda ───────────────────────────────────────────────────── */
+.hero {
+  min-height: 100svh;
+  padding: clamp(6.5rem, 14vh, 9rem) var(--marco) 0;
+  display: grid; grid-template-rows: 1fr auto; gap: clamp(2rem, 5vh, 3rem);
+}
+.hero__titulo { font-size: clamp(2.3rem, 1.2rem + 4vw, 5rem); max-width: 16ch; margin-bottom: 1.2rem; }
+.hero__entrada { color: var(--crema-70); max-width: 52ch; font-size: 1.05em; }
+.hero__acciones { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 2rem; }
+
+.balda { margin: 0 calc(var(--marco) * -1); padding: 0 clamp(0.5rem, 2vw, 2rem); }
+.balda__lomos {
+  list-style: none; margin: 0; padding: 0 0 0 0.6rem;
+  display: flex; align-items: flex-end; gap: 3px;
+  height: clamp(190px, 30vh, 290px);
+  border-bottom: 10px solid #4A3B2A;                 /* la madera de la balda */
+  box-shadow: 0 10px 0 rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+.lomo {
+  position: relative;
+  flex: 0 0 auto;
+  width: var(--ancho);
+  height: var(--alto);
+  background: var(--fondo);
+  color: var(--texto);
+  border-radius: 2px 2px 0 0;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transform-origin: bottom center;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+  box-shadow: inset -3px 0 0 rgba(0, 0, 0, 0.18);
+}
+.lomo--bandas::before,
+.lomo--bandas::after {
+  content: ""; position: absolute; left: 12%; right: 12%; height: 2px;
+  background: currentColor; opacity: 0.55;
+}
+.lomo--bandas::before { top: 12%; }
+.lomo--bandas::after { top: 17%; }
+.lomo__titulo, .lomo__autor {
+  writing-mode: vertical-rl; text-orientation: mixed;
+  white-space: nowrap; overflow: hidden;
+  font-family: var(--display); font-size: 0.68rem; font-weight: 600;
+  letter-spacing: 0.02em;
+  max-height: 78%;
+}
+.lomo__autor { font-family: var(--mono); font-size: 0.56rem; opacity: 0.75; margin-top: 0.6rem; max-height: 18%; }
+/* Sale a saludar: la balda responde al dedo como una de verdad */
+.lomo:hover, .lomo:focus-visible { transform: translateY(-18px) rotate(-2deg); box-shadow: 0 10px 18px rgba(0, 0, 0, 0.45); z-index: 2; }
+.lomo.es-vecino { transform: translateY(-6px) rotate(1.2deg); }
+
+.balda__pie {
+  font-family: var(--mono); font-size: 0.7rem; color: var(--crema-45);
+  margin: 1.4rem 0 1.6rem; padding-left: 0.6rem;
+}
+
+/* ── La mesa ───────────────────────────────────────────────────────────── */
+.mesa { padding: clamp(3.5rem, 8vh, 6rem) var(--marco); background: var(--pared-clara); }
+.libros {
+  list-style: none; margin: clamp(2rem, 5vh, 3.5rem) 0 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+}
+.libro { display: grid; gap: 1rem; align-content: start; }
+.libro img {
+  width: 100%;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.libro:hover img { transform: translate(-3px, -3px); box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.4); }
+.libro__ficha h3 { font-size: 1.25rem; margin-bottom: 0.2rem; }
+.libro__autor { font-family: var(--mono); font-size: 0.72rem; color: var(--mostaza); margin: 0 0 0.6rem; }
+.libro__nota {
+  color: var(--crema-70); font-size: 0.94em; margin: 0 0 0.6rem;
+  border-left: 2px solid var(--crema-14); padding-left: 0.8rem; font-style: italic;
+}
+.libro__precio { font-family: var(--mono); font-weight: 700; font-size: 0.95rem; margin: 0; }
+
+/* ── El plano ──────────────────────────────────────────────────────────── */
+.plano { padding: clamp(3.5rem, 8vh, 6rem) var(--marco); }
+.plano__caja {
+  display: grid; gap: clamp(1.5rem, 4vw, 3rem);
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  margin-top: clamp(2rem, 5vh, 3.5rem);
+  align-items: start;
+}
+.plano__dibujo { width: 100%; height: auto; color: var(--crema-45); }
+.plano__zona rect { fill: rgba(242, 237, 225, 0.06); stroke: var(--crema-45); stroke-width: 2; transition: fill 0.25s ease, stroke 0.25s ease; }
+.plano__zona text {
+  fill: var(--crema); font-family: "Courier Prime", monospace; font-size: 15px;
+  text-anchor: middle; pointer-events: none;
+}
+.plano__zona.es-activa rect { fill: var(--mostaza); stroke: var(--mostaza); }
+.plano__zona.es-activa text { fill: var(--pared); font-weight: 700; }
+
+.plano__lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+.plano__lista li {
+  display: grid; gap: 0.1rem;
+  border-top: 1px solid var(--crema-14); padding: 0.55rem 0.6rem;
+  transition: background 0.25s ease;
+  cursor: default;
+}
+.plano__lista li.es-activa { background: rgba(224, 162, 27, 0.14); }
+.plano__lista b { font-family: var(--display); font-size: 1rem; }
+.plano__lista span { color: var(--crema-70); font-size: 0.9em; }
+
+/* ── Club ──────────────────────────────────────────────────────────────── */
+.club { padding: clamp(3.5rem, 8vh, 6rem) var(--marco); background: var(--pared-clara); }
+.club__rejilla {
+  display: grid; gap: clamp(1.5rem, 4vw, 3rem);
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  margin-top: clamp(2rem, 5vh, 3.5rem);
+  align-items: start;
+}
+.sesiones { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; counter-reset: s; }
+.sesiones li {
+  display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 1rem;
+  align-items: baseline;
+  border-top: 2px solid var(--crema-14); padding-top: 0.7rem;
+}
+.sesiones li:first-child { border-top-color: var(--mostaza); }
+.sesiones__fecha { font-family: var(--mono); font-size: 0.82rem; color: var(--mostaza); }
+.sesiones__libro { font-family: var(--display); font-size: 1.05rem; }
+.sesiones__libro em { font-style: normal; display: block; font-family: var(--mono); font-size: 0.72rem; color: var(--crema-45); }
+
+.club__nota { border: 2px solid var(--crema-14); padding: clamp(1.2rem, 3vw, 1.8rem); }
+.club__nota h3 { font-size: 1.3rem; margin-bottom: 0.9rem; }
+.club__nota ul { margin: 0 0 1rem; padding-left: 1.1rem; display: grid; gap: 0.6rem; }
+.club__nota li { color: var(--crema-70); font-size: 0.94em; }
+.club__aviso { font-family: var(--mono); font-size: 0.7rem; color: var(--crema-45); margin: 0; }
+
+/* ── Encargos ──────────────────────────────────────────────────────────── */
+.encargos { padding: clamp(3.5rem, 8vh, 6rem) var(--marco); }
+.encargos__rejilla {
+  display: grid; gap: clamp(1.5rem, 4vw, 3.5rem);
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  margin-top: clamp(2rem, 5vh, 3.5rem);
+  align-items: start;
+}
+.pasos { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.2rem; }
+.pasos li { display: grid; grid-template-columns: 3rem minmax(0, 1fr); gap: 1rem; align-items: baseline; }
+.pasos b { font-family: var(--display); font-size: 1.6rem; color: var(--rojo); }
+.pasos span { color: var(--crema-70); }
+
+.formulario { border: 2px solid var(--crema-14); padding: clamp(1.3rem, 3vw, 2rem); background: var(--pared-clara); }
+.formulario h3 { font-size: 1.3rem; margin-bottom: 1rem; }
+.campo { display: grid; gap: 0.35rem; margin-bottom: 1rem; }
+.campo label { font-family: var(--mono); font-size: 0.72rem; color: var(--crema-45); }
+.campo input, .campo textarea {
+  font: inherit; font-size: 0.95em;
+  padding: 0.7rem 0.85rem;
+  border: 2px solid var(--crema-14); border-radius: 3px;
+  background: var(--pared); color: inherit; width: 100%; resize: vertical;
+}
+.formulario__estado { font-family: var(--mono); font-size: 0.78rem; color: var(--mostaza); margin: 1rem 0 0; min-height: 1.2em; }
+.formulario__demo { font-family: var(--mono); font-size: 0.68rem; color: var(--crema-45); margin: 0.6rem 0 0; }
+
+/* ── Gente y voces ─────────────────────────────────────────────────────── */
+.gente { padding: clamp(3.5rem, 8vh, 6rem) var(--marco); background: var(--pared-clara); }
+.fichas {
+  list-style: none; margin: clamp(2rem, 5vh, 3rem) 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+.fichas li { border-top: 2px solid var(--crema); padding-top: 1rem; }
+.fichas h3 { font-size: 1.35rem; margin-bottom: 0.2rem; }
+.fichas__papel { font-family: var(--mono); font-size: 0.74rem; color: var(--mostaza); margin-bottom: 0.7rem; }
+.fichas li p:last-child { color: var(--crema-70); font-size: 0.94em; margin: 0; }
+
+.voces {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  gap: clamp(1.2rem, 3vw, 2.5rem);
+}
+.voces blockquote { margin: 0; }
+.voces blockquote p { font-family: var(--display); font-size: 1.1rem; line-height: 1.45; }
+.voces__firma { font-family: var(--mono); font-size: 0.72rem; color: var(--crema-45); margin: 0; }
+
+/* ── Visita ────────────────────────────────────────────────────────────── */
+.visita { padding: clamp(3.5rem, 8vh, 6rem) var(--marco); }
+.visita__rejilla {
+  display: grid; gap: clamp(2rem, 4vw, 3.5rem);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+  margin-top: clamp(2rem, 5vh, 3.5rem);
+  align-items: start;
+}
+.donde__estado {
+  display: inline-flex; font-family: var(--mono); font-size: 0.76rem;
+  border: 2px solid var(--crema); border-radius: 3px;
+  padding: 0.35rem 0.8rem; margin-bottom: 1.2rem;
+}
+.donde__estado.esta-abierto { background: var(--mostaza); border-color: var(--mostaza); color: var(--pared); }
+.donde address { font-style: normal; line-height: 1.9; margin-bottom: 1.2rem; }
+.horario { margin: 0 0 1.2rem; display: grid; gap: 0.5rem; }
+.horario > div { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem; border-top: 1px solid var(--crema-14); padding-top: 0.5rem; }
+.horario > div.es-hoy dt { color: var(--mostaza); font-weight: 600; }
+.horario dd { margin: 0; font-family: var(--mono); font-size: 0.8rem; text-align: right; }
+.donde__nota { color: var(--crema-70); font-size: 0.92em; }
+.mapa__aviso { font-family: var(--mono); font-size: 0.7rem; line-height: 1.7; color: var(--crema-45); margin: 0.8rem 0 0; }
+.mapa iframe { width: 100%; height: 320px; border: 2px solid var(--crema-14); display: block; }
+
+/* ── Pie ───────────────────────────────────────────────────────────────── */
+.pie {
+  border-top: 1px solid var(--crema-14);
+  padding: clamp(2.5rem, 6vh, 4rem) var(--marco) 2.5rem;
+  display: grid; gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+  align-items: start;
+}
+.pie__marca { display: flex; gap: 0.9rem; align-items: flex-start; }
+.pie__marca .marca__icono { width: 38px; color: var(--mostaza); flex: none; }
+.pie__marca p { margin: 0; font-family: var(--mono); font-size: 0.76rem; line-height: 1.8; color: var(--crema-70); }
+.pie__nav ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; }
+.pie__nav a { font-family: var(--mono); font-size: 0.76rem; }
+.pie__sello {
+  grid-column: 1 / -1; margin: 0;
+  border-top: 1px solid var(--crema-14); padding-top: 1.4rem;
+  font-family: var(--mono); font-size: 0.7rem; line-height: 1.9; color: var(--crema-70);
+  max-width: 92ch;
+}
+
+/* ── Aviso de cookies ──────────────────────────────────────────────────── */
+.cookie-banner {
+  position: fixed; z-index: 200;
+  left: var(--marco); right: var(--marco); bottom: clamp(0.8rem, 2vh, 1.4rem);
+  background: var(--crema); color: var(--pared);
+  padding: 1.1rem 1.3rem; gap: 1.2rem;
+  align-items: center; justify-content: space-between; flex-wrap: wrap;
+  border-radius: 3px;
+}
+/* OJO: el display va aquí, nunca en .cookie-banner a secas, o gana a [hidden] */
+.cookie-banner:not([hidden]) { display: flex; }
+.cookie-banner p { margin: 0; max-width: 72ch; font-size: 0.85rem; line-height: 1.6; }
+.cookie-banner__acciones { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.cookie-banner .boton { border-color: var(--pared); color: var(--pared); }
+.cookie-banner .boton--crema { background: var(--pared); color: var(--crema); }
+.cookie-banner .boton--crema:hover { background: var(--rojo); border-color: var(--rojo); }
+.cookie-banner .boton--linea:hover { background: var(--pared); color: var(--crema); }
+
+/* ── Cursor ────────────────────────────────────────────────────────────── */
+.cursor { display: none; }
+@media (hover: hover) and (pointer: fine) {
+  .cursor {
+    display: block; position: fixed; top: 0; left: 0; z-index: 250;
+    pointer-events: none; transform: translate3d(-100px, -100px, 0);
+  }
+  /* un marcapáginas: rectángulo con la muesca abajo */
+  .cursor__marca {
+    display: block; width: 14px; height: 24px; margin: -12px 0 0 -7px;
+    background: var(--mostaza);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 74%, 0 100%);
+    transition: width 0.25s ease, height 0.25s ease, margin 0.25s ease;
+  }
+  .cursor.es-grande .cursor__marca { width: 84px; height: 104px; margin: -52px 0 0 -42px; }
+  .cursor__texto {
+    position: absolute; top: 44%; left: 50%; transform: translate(-50%, -50%);
+    font-family: var(--mono); font-size: 0.62rem; color: var(--pared);
+    opacity: 0; white-space: nowrap;
+  }
+  .cursor.es-grande .cursor__texto { opacity: 1; }
+}
+
+/* ── Estados de entrada (solo con GSAP) ────────────────────────────────── */
+.has-motion .kicker,
+.has-motion .indice,
+.has-motion .parrafo,
+.has-motion .hero__entrada,
+.has-motion .hero__acciones,
+.has-motion .libro,
+.has-motion .plano__lista li,
+.has-motion .sesiones li,
+.has-motion .club__nota,
+.has-motion .pasos li,
+.has-motion .formulario,
+.has-motion .fichas li,
+.has-motion .voces li { opacity: 0; }
+/* El titular entra como sale un libro de la balda: desde abajo, tras su canto */
+.has-motion [data-linea] .linea__texto { opacity: 0; }
+
+.linea { display: block; overflow: hidden; }
+.linea__texto { display: block; }
+
+/* ── Responsive ────────────────────────────────────────────────────────── */
+@media (max-width: 1000px) {
+  .hamburguesa { display: inline-flex; }
+  .nav {
+    position: fixed; inset: 0 0 auto 0;
+    flex-direction: column; align-items: stretch; gap: 1.2rem;
+    padding: 5.5rem var(--marco) 2.5rem;
+    background: var(--pared); border-bottom: 1px solid var(--crema-14);
+    transform: translateY(-101%);
+    transition: transform 0.4s cubic-bezier(0.6, 0, 0.2, 1);
+    z-index: -1;
+  }
+  .nav.esta-abierto { transform: translateY(0); }
+  .nav ul { flex-direction: column; gap: 0.9rem; }
+  .nav a { font-size: 1rem; }
+  .nav__cta { justify-content: center; }
+
+  .plano__caja, .club__rejilla, .encargos__rejilla { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 680px) {
+  .balda__lomos { height: 160px; }
+  .lomo__titulo { font-size: 0.6rem; }
+  .sesiones li { grid-template-columns: 1fr; gap: 0.2rem; }
+}
+
+/* ── Movimiento reducido ───────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .cursor { display: none; }
+  /* la balda sigue respondiendo, pero sin inclinarse */
+  .lomo:hover, .lomo:focus-visible { transform: translateY(-12px); }
+  .lomo.es-vecino { transform: none; }
+}

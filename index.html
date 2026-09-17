@@ -1,0 +1,555 @@
+<!doctype html>
+<!--
+  ============================================================================
+  SITIO DE DEMOSTRACIÓN. «Librería Cuadratín» es un negocio FICTICIO,
+  inventado para esta plantilla. Nombre, dirección, teléfono, horarios,
+  precios, personas y opiniones son datos de muestra y no corresponden a
+  ningún negocio real. Los títulos, autores y sellos editoriales que aparecen
+  también están inventados: no existen esos libros ni esas editoriales.
+  No indexar, no citar como fuente.
+  Concepto: «Lomos».
+  ============================================================================
+-->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Librería Cuadratín · librería de barrio (demostración)</title>
+<meta name="description" content="Plantilla de demostración para librería. Cuadratín es un negocio ficticio: mesa de novedades, club de lectura, encargos en 48 horas y plano de la casa.">
+<meta name="theme-color" content="#23261F">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Librería Cuadratín (sitio de demostración)">
+<meta property="og:description" content="Negocio ficticio. Plantilla con concepto «Lomos»: la estantería manda, y de ella sale todo.">
+<meta property="og:image" content="assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;600;700&family=Karla:wght@400;500;600&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="stylesheet" href="css/estilo.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BookStore",
+  "name": "Librería Cuadratín",
+  "description": "Librería de barrio con club de lectura y encargos. Negocio ficticio usado como demostración.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Praza do Cuadrante, 2",
+    "postalCode": "27001",
+    "addressLocality": "Lugo",
+    "addressRegion": "Lugo",
+    "addressCountry": "ES"
+  },
+  "telephone": "+34982000018",
+  "email": "hola@cuadratin.example",
+  "priceRange": "€",
+  "openingHours": ["Mo-Fr 10:00-14:00", "Mo-Fr 17:00-20:30", "Sa 10:30-14:00"],
+  "disambiguatingDescription": "Negocio ficticio. Sitio de demostración."
+}
+</script>
+</head>
+<body>
+<a class="salto" href="#contenido">Saltar al contenido</a>
+
+<div class="cursor" aria-hidden="true" data-cursor>
+  <span class="cursor__marca"></span>
+  <span class="cursor__texto"></span>
+</div>
+
+<header class="cabecera" data-cabecera>
+  <a class="marca" href="#inicio">
+    <svg class="marca__icono" viewBox="0 0 34 34" aria-hidden="true" focusable="false">
+      <rect x="3" y="4" width="7" height="26" rx="1.5" fill="currentColor"/>
+      <rect x="12" y="8" width="6" height="22" rx="1.5" fill="none" stroke="currentColor" stroke-width="2.4"/>
+      <rect x="20" y="6" width="10" height="24" rx="1.5" fill="none" stroke="currentColor" stroke-width="2.4" transform="rotate(9 25 18)"/>
+    </svg>
+    <span class="marca__texto">Cuadratín</span>
+  </a>
+
+  <button class="hamburguesa" type="button" aria-expanded="false" aria-controls="menu-principal" data-menu-boton>
+    <span class="hamburguesa__lineas" aria-hidden="true"><i></i><i></i></span>
+    <span>Menú</span>
+  </button>
+
+  <nav class="nav" id="menu-principal" aria-label="Navegación principal" data-menu>
+    <ul>
+      <li><a href="#mesa">La mesa</a></li>
+      <li><a href="#plano">El plano</a></li>
+      <li><a href="#club">Club de lectura</a></li>
+      <li><a href="#encargos">Encargos</a></li>
+      <li><a href="#gente">Quién atiende</a></li>
+      <li><a href="#visita">Visítanos</a></li>
+    </ul>
+    <a class="boton boton--crema nav__cta" href="#encargos">Encargar un libro</a>
+  </nav>
+</header>
+
+<main id="contenido">
+
+  <!-- ══════════ HERO: LA ESTANTERÍA ══════════ -->
+  <section class="hero" id="inicio">
+    <div class="hero__texto">
+      <p class="kicker">Lugo · librería de barrio · desde 2014</p>
+      <h1 class="hero__titulo" data-linea>Un libro se elige por el lomo</h1>
+      <p class="hero__entrada">
+        Nadie entra pidiendo un ISBN. Se entra, se pasa el dedo por la balda y se para
+        donde se para. Toda esta página está hecha de eso: pasa el ratón por los lomos
+        —o tócalos— y saldrán a saludar.
+      </p>
+      <div class="hero__acciones">
+        <a class="boton boton--crema" href="#mesa" data-iman>Ver la mesa de novedades</a>
+        <a class="boton boton--linea" href="#club" data-iman>El club de lectura</a>
+      </div>
+    </div>
+
+    <div class="balda" data-balda>
+      <ul class="balda__lomos" data-lomos>
+        <!--LOMOS-->
+        <li class="lomo lomo--bandas" style="--fondo:#C0392B;--texto:#F2EDE1;--ancho:23px;--alto:90%" tabindex="0">
+          <span class="lomo__titulo">A hora do salitre</span>
+          <span class="lomo__autor">Nogueira</span>
+        </li>
+        <li class="lomo" style="--fondo:#2E5FA3;--texto:#F2EDE1;--ancho:39px;--alto:94%" tabindex="0">
+          <span class="lomo__titulo">Cuaderno de mareas</span>
+          <span class="lomo__autor">Ferrol</span>
+        </li>
+        <li class="lomo lomo--bandas" style="--fondo:#E0A21B;--texto:#23261F;--ancho:45px;--alto:99%" tabindex="0">
+          <span class="lomo__titulo">El pan y la brasa</span>
+          <span class="lomo__autor">Ibáñez</span>
+        </li>
+        <li class="lomo" style="--fondo:#3E7A4E;--texto:#F2EDE1;--ancho:40px;--alto:76%" tabindex="0">
+          <span class="lomo__titulo">Trece inviernos</span>
+          <span class="lomo__autor">Salgado</span>
+        </li>
+        <li class="lomo lomo--bandas" style="--fondo:#8E4585;--texto:#F2EDE1;--ancho:25px;--alto:76%" tabindex="0">
+          <span class="lomo__titulo">La casa del reloj</span>
+          <span class="lomo__autor">Ordóñez</span>
+        </li>
+        <li class="lomo" style="--fondo:#D8624A;--texto:#23261F;--ancho:29px;--alto:99%" tabindex="0">
+          <span class="lomo__titulo">Camiño de sirga</span>
+          <span class="lomo__autor">Barreiro</span>
+        </li>
+        <li class="lomo lomo--bandas" style="--fondo:#1F3A5F;--texto:#E9D9B8;--ancho:33px;--alto:93%" tabindex="0">
+          <span class="lomo__titulo">Tinta y ceniza</span>
+          <span class="lomo__autor">Arjona</span>
+        </li>
+        <li class="lomo" style="--fondo:#B9A46A;--texto:#23261F;--ancho:27px;--alto:88%" tabindex="0">
+          <span class="lomo__titulo">El último tren</span>
+          <span class="lomo__autor">Vilar</span>
+        </li>
+        <li class="lomo" style="--fondo:#5A6E52;--texto:#F2EDE1;--ancho:26px;--alto:83%" tabindex="0">
+          <span class="lomo__titulo">Herba de lúa</span>
+          <span class="lomo__autor">Cendón</span>
+        </li>
+        <li class="lomo lomo--bandas" style="--fondo:#A8352C;--texto:#E9D9B8;--ancho:30px;--alto:82%" tabindex="0">
+          <span class="lomo__titulo">Los días contados</span>
+          <span class="lomo__autor">Meana</span>
+        </li>
+        <li class="lomo" style="--fondo:#2F6F6B;--texto:#F2EDE1;--ancho:44px;--alto:83%" tabindex="0">
+          <span class="lomo__titulo">Un mapa sin costas</span>
+          <span class="lomo__autor">Quintá</span>
+        </li>
+        <li class="lomo lomo--bandas" style="--fondo:#E4CBA0;--texto:#23261F;--ancho:37px;--alto:83%" tabindex="0">
+          <span class="lomo__titulo">La sal en la lengua</span>
+          <span class="lomo__autor">Roca</span>
+        </li>
+        <li class="lomo" style="--fondo:#C0392B;--texto:#F2EDE1;--ancho:35px;--alto:97%" tabindex="0">
+          <span class="lomo__titulo">Cartas al farero</span>
+          <span class="lomo__autor">Deibe</span>
+        </li>
+        <li class="lomo" style="--fondo:#2E5FA3;--texto:#F2EDE1;--ancho:43px;--alto:84%" tabindex="0">
+          <span class="lomo__titulo">Orballo</span>
+          <span class="lomo__autor">Pousa</span>
+        </li>
+        <li class="lomo lomo--bandas" style="--fondo:#E0A21B;--texto:#23261F;--ancho:24px;--alto:76%" tabindex="0">
+          <span class="lomo__titulo">El taller de las cosas rotas</span>
+          <span class="lomo__autor">Lamas</span>
+        </li>
+        <li class="lomo" style="--fondo:#3E7A4E;--texto:#F2EDE1;--ancho:40px;--alto:82%" tabindex="0">
+          <span class="lomo__titulo">Nadie llama dos veces</span>
+          <span class="lomo__autor">Ferrín</span>
+        </li>
+        <li class="lomo lomo--bandas" style="--fondo:#8E4585;--texto:#F2EDE1;--ancho:45px;--alto:82%" tabindex="0">
+          <span class="lomo__titulo">Cuarto menguante</span>
+          <span class="lomo__autor">Alborés</span>
+        </li>
+        <li class="lomo lomo--bandas" style="--fondo:#D8624A;--texto:#23261F;--ancho:20px;--alto:76%" tabindex="0">
+          <span class="lomo__titulo">El invierno de las grúas</span>
+          <span class="lomo__autor">Doval</span>
+        </li>
+        <li class="lomo" style="--fondo:#1F3A5F;--texto:#E9D9B8;--ancho:36px;--alto:83%" tabindex="0">
+          <span class="lomo__titulo">Once pájaros</span>
+          <span class="lomo__autor">Sendín</span>
+        </li>
+        <li class="lomo lomo--bandas" style="--fondo:#B9A46A;--texto:#23261F;--ancho:30px;--alto:97%" tabindex="0">
+          <span class="lomo__titulo">La lengua del río</span>
+          <span class="lomo__autor">Cotelo</span>
+        </li>
+        <li class="lomo" style="--fondo:#5A6E52;--texto:#F2EDE1;--ancho:24px;--alto:89%" tabindex="0">
+          <span class="lomo__titulo">Ruído branco</span>
+          <span class="lomo__autor">Xesteira</span>
+        </li>
+        <li class="lomo lomo--bandas" style="--fondo:#A8352C;--texto:#E9D9B8;--ancho:35px;--alto:97%" tabindex="0">
+          <span class="lomo__titulo">Antes del incendio</span>
+          <span class="lomo__autor">Beade</span>
+        </li>
+        <li class="lomo lomo--bandas" style="--fondo:#2F6F6B;--texto:#F2EDE1;--ancho:41px;--alto:81%" tabindex="0">
+          <span class="lomo__titulo">El hueco del armario</span>
+          <span class="lomo__autor">Varela</span>
+        </li>
+        <li class="lomo" style="--fondo:#E4CBA0;--texto:#23261F;--ancho:31px;--alto:83%" tabindex="0">
+          <span class="lomo__titulo">Mar de fondo</span>
+          <span class="lomo__autor">Regueiro</span>
+        </li>
+        <li class="lomo lomo--bandas" style="--fondo:#C0392B;--texto:#F2EDE1;--ancho:33px;--alto:99%" tabindex="0">
+          <span class="lomo__titulo">Los nombres del viento del norte</span>
+          <span class="lomo__autor">Piñeiro</span>
+        </li>
+        <li class="lomo" style="--fondo:#2E5FA3;--texto:#F2EDE1;--ancho:46px;--alto:79%" tabindex="0">
+          <span class="lomo__titulo">Tres de la tarde</span>
+          <span class="lomo__autor">Baltar</span>
+        </li>
+        <li class="lomo" style="--fondo:#E0A21B;--texto:#23261F;--ancho:32px;--alto:91%" tabindex="0">
+          <span class="lomo__titulo">El cuaderno azul</span>
+          <span class="lomo__autor">Presas</span>
+        </li>
+        <li class="lomo" style="--fondo:#3E7A4E;--texto:#F2EDE1;--ancho:45px;--alto:92%" tabindex="0">
+          <span class="lomo__titulo">Vento mareiro do sur</span>
+          <span class="lomo__autor">Caramés</span>
+        </li>
+        <!--/LOMOS-->
+      </ul>
+      <p class="balda__pie">Estantería de la casa · títulos inventados para esta demostración</p>
+    </div>
+  </section>
+
+  <!-- ══════════ LA MESA ══════════ -->
+  <section class="mesa" id="mesa" aria-labelledby="t-mesa">
+    <div class="seccion__cabeza">
+      <p class="indice">01 — La mesa de novedades</p>
+      <h2 id="t-mesa" data-linea>Seis que hemos leído</h2>
+      <p class="parrafo">
+        En la mesa de la entrada no cabe todo, así que ponemos lo que hemos leído y
+        podemos defender. Debajo de cada uno va escrita a mano la razón.
+      </p>
+    </div>
+
+    <ul class="libros">
+      <li class="libro">
+        <img src="assets/portadas/portada-salitre.svg" width="320" height="470" loading="lazy" alt="Portada inventada de «A hora do salitre», de Uxía Nogueira.">
+        <div class="libro__ficha">
+          <h3>A hora do salitre</h3>
+          <p class="libro__autor">Uxía Nogueira · Edicións Marea</p>
+          <p class="libro__nota">«Una novela de puerto, de las que huelen a rede mojada. Si te gustó el último de Sendín, este te va a durar dos noches.»</p>
+          <p class="libro__precio">19,50 €</p>
+        </div>
+      </li>
+      <li class="libro">
+        <img src="assets/portadas/portada-brasa.svg" width="320" height="470" loading="lazy" alt="Portada inventada de «El pan y la brasa», de Marcos Ibáñez.">
+        <div class="libro__ficha">
+          <h3>El pan y la brasa</h3>
+          <p class="libro__autor">Marcos Ibáñez · Cuadratín Libros</p>
+          <p class="libro__nota">«Ensayo sobre la comida de aldea sin una sola receta. Se lee con hambre y se termina con ganas de llamar a casa.»</p>
+          <p class="libro__precio">21,00 €</p>
+        </div>
+      </li>
+      <li class="libro">
+        <img src="assets/portadas/portada-reloj.svg" width="320" height="470" loading="lazy" alt="Portada inventada de «La casa del reloj», de Clara Ordóñez.">
+        <div class="libro__ficha">
+          <h3>La casa del reloj</h3>
+          <p class="libro__autor">Clara Ordóñez · Editorial Sirga</p>
+          <p class="libro__nota">«Una casa, cuatro generaciones y un reloj que nadie arregla. Lo hemos vendido catorce veces este mes y nadie ha vuelto a quejarse.»</p>
+          <p class="libro__precio">22,90 €</p>
+        </div>
+      </li>
+      <li class="libro">
+        <img src="assets/portadas/portada-herba.svg" width="320" height="470" loading="lazy" alt="Portada inventada de «Herba de lúa», de Antía Cendón.">
+        <div class="libro__ficha">
+          <h3>Herba de lúa</h3>
+          <p class="libro__autor">Antía Cendón · Edicións Marea</p>
+          <p class="libro__nota">«Poesía en galego que se entiende a la primera, que ya es bastante. Buen regalo para quien dice que no lee poesía.»</p>
+          <p class="libro__precio">15,00 €</p>
+        </div>
+      </li>
+      <li class="libro">
+        <img src="assets/portadas/portada-gruas.svg" width="320" height="470" loading="lazy" alt="Portada inventada de «El invierno de las grúas», de Rubén Doval.">
+        <div class="libro__ficha">
+          <h3>El invierno de las grúas</h3>
+          <p class="libro__autor">Rubén Doval · Editorial Sirga</p>
+          <p class="libro__nota">«Novela negra de astillero, con más frío que sangre. Es la que le damos a quien dice que la negra ya está muy vista.»</p>
+          <p class="libro__precio">20,00 €</p>
+        </div>
+      </li>
+      <li class="libro">
+        <img src="assets/portadas/portada-pajaros.svg" width="320" height="470" loading="lazy" alt="Portada inventada de «Once pájaros», de Lois Sendín.">
+        <div class="libro__ficha">
+          <h3>Once pájaros</h3>
+          <p class="libro__autor">Lois Sendín · Cuadratín Libros</p>
+          <p class="libro__nota">«Once cuentos y ni uno de relleno. El tercero lo leemos en voz alta a quien entra preguntando qué llevar.»</p>
+          <p class="libro__precio">17,50 €</p>
+        </div>
+      </li>
+    </ul>
+
+    <p class="aviso">
+      Títulos, autores, sellos y precios inventados para esta demostración. Las portadas
+      están dibujadas en SVG para la plantilla: no reproducen ninguna edición real.
+    </p>
+  </section>
+
+  <!-- ══════════ EL PLANO ══════════ -->
+  <section class="plano" id="plano" aria-labelledby="t-plano">
+    <div class="seccion__cabeza">
+      <p class="indice">02 — El plano</p>
+      <h2 id="t-plano" data-linea>Dónde está cada cosa</h2>
+      <p class="parrafo">
+        Son sesenta metros cuadrados y no hay pasillos perdidos. Pasa por encima de una
+        zona del plano para ver qué guarda.
+      </p>
+    </div>
+
+    <div class="plano__caja">
+      <svg class="plano__dibujo" viewBox="0 0 600 420" role="img" aria-labelledby="titulo-plano">
+        <title id="titulo-plano">Plano de la librería: entrada y mesa de novedades al sur, narrativa y ensayo en la pared este, galego y poesía al oeste, cómic e infantil al norte, mostrador en el centro y sala del club al fondo.</title>
+        <rect x="8" y="8" width="584" height="404" fill="none" stroke="currentColor" stroke-width="3"/>
+        <g class="plano__zona" data-zona="entrada">
+          <rect x="220" y="356" width="160" height="56"/>
+          <text x="300" y="390">Entrada</text>
+        </g>
+        <g class="plano__zona" data-zona="mesa">
+          <rect x="230" y="272" width="140" height="64" rx="6"/>
+          <text x="300" y="310">Mesa de novedades</text>
+        </g>
+        <g class="plano__zona" data-zona="narrativa">
+          <rect x="452" y="64" width="132" height="200"/>
+          <text x="518" y="170">Narrativa</text>
+        </g>
+        <g class="plano__zona" data-zona="ensayo">
+          <rect x="452" y="272" width="132" height="120"/>
+          <text x="518" y="336">Ensayo</text>
+        </g>
+        <g class="plano__zona" data-zona="galego">
+          <rect x="16" y="64" width="128" height="160"/>
+          <text x="80" y="148">Galego</text>
+        </g>
+        <g class="plano__zona" data-zona="poesia">
+          <rect x="16" y="232" width="128" height="120"/>
+          <text x="80" y="296">Poesía</text>
+        </g>
+        <g class="plano__zona" data-zona="comic">
+          <rect x="164" y="16" width="130" height="120"/>
+          <text x="229" y="80">Cómic</text>
+        </g>
+        <g class="plano__zona" data-zona="infantil">
+          <rect x="304" y="16" width="130" height="120"/>
+          <text x="369" y="80">Infantil</text>
+        </g>
+        <g class="plano__zona" data-zona="mostrador">
+          <rect x="176" y="168" width="110" height="60" rx="4"/>
+          <text x="231" y="203">Mostrador</text>
+        </g>
+        <g class="plano__zona" data-zona="club">
+          <rect x="306" y="156" width="126" height="84"/>
+          <text x="369" y="203">Sala del club</text>
+        </g>
+      </svg>
+
+      <ul class="plano__lista" data-plano-lista>
+        <li data-zona="entrada"><b>Entrada</b><span>Escaparate y la mesa que se ve desde la calle.</span></li>
+        <li data-zona="mesa"><b>Mesa de novedades</b><span>Lo que hemos leído este mes, con su nota escrita a mano.</span></li>
+        <li data-zona="narrativa"><b>Narrativa</b><span>La pared larga. Castellano y traducción, por orden de apellido.</span></li>
+        <li data-zona="ensayo"><b>Ensayo</b><span>Historia, ciencia y el estante de libros sobre libros.</span></li>
+        <li data-zona="galego"><b>Galego</b><span>Narrativa, ensayo y poesía en gallego, todo junto.</span></li>
+        <li data-zona="poesia"><b>Poesía</b><span>Dos baldas y una silla, que es como se lee poesía.</span></li>
+        <li data-zona="comic"><b>Cómic</b><span>Novela gráfica y álbum, con lo europeo separado.</span></li>
+        <li data-zona="infantil"><b>Infantil</b><span>Alfombra, banqueta baja y álbum ilustrado a la altura de quien lo va a leer.</span></li>
+        <li data-zona="mostrador"><b>Mostrador</b><span>Aquí se encarga, se envuelve y se discute.</span></li>
+        <li data-zona="club"><b>Sala del club</b><span>Al fondo. Doce sillas y una mesa que sobrevivió a tres mudanzas.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ══════════ CLUB DE LECTURA ══════════ -->
+  <section class="club" id="club" aria-labelledby="t-club">
+    <div class="seccion__cabeza">
+      <p class="indice">03 — Club de lectura</p>
+      <h2 id="t-club" data-linea>El primer jueves, a las ocho</h2>
+      <p class="parrafo">
+        Doce plazas, sin cuota y sin tener que comprar el libro aquí. Se lee lo que se
+        vota en diciembre y se habla hasta que cierra la puerta.
+      </p>
+    </div>
+
+    <div class="club__rejilla">
+      <ol class="sesiones" data-sesiones>
+        <li><span class="sesiones__fecha">—</span><span class="sesiones__libro">Cargando el calendario…</span></li>
+      </ol>
+
+      <aside class="club__nota">
+        <h3>Cómo va</h3>
+        <ul>
+          <li>Se apunta uno en el mostrador o por teléfono. Doce plazas, por orden.</li>
+          <li>El libro se puede traer de casa, de la biblioteca o comprarlo aquí: nos da igual.</li>
+          <li>Empieza a las 20:00 y termina a las 21:30, con rigor de reloj de estación.</li>
+          <li>Si no te ha gustado el libro, ven igual: esas son las sesiones buenas.</li>
+        </ul>
+        <p class="club__aviso">Calendario calculado en vivo para la demostración: son los primeros jueves reales de los próximos meses, con títulos inventados.</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ══════════ ENCARGOS ══════════ -->
+  <section class="encargos" id="encargos" aria-labelledby="t-encargos">
+    <div class="seccion__cabeza">
+      <p class="indice">04 — Encargos</p>
+      <h2 id="t-encargos" data-linea>Lo que no está, en 48 horas</h2>
+    </div>
+
+    <div class="encargos__rejilla">
+      <ol class="pasos">
+        <li><b>01</b><span>Nos dices el título, o lo que recuerdes de él. Con «la de la portada azul del año pasado» solemos apañarnos.</span></li>
+        <li><b>02</b><span>Miramos si está en distribución y te decimos el precio y el día. Sin señal ni compromiso.</span></li>
+        <li><b>03</b><span>Llega en 48 horas si está en almacén, o en una semana si viene de fuera. Avisamos por teléfono.</span></li>
+        <li><b>04</b><span>Se queda guardado con tu nombre quince días. Si al final no lo quieres, no pasa nada.</span></li>
+      </ol>
+
+      <form class="formulario" data-encargo novalidate>
+        <h3>Pedir un libro</h3>
+        <p class="campo">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" name="nombre" type="text" autocomplete="name" required>
+        </p>
+        <p class="campo">
+          <label for="tel">Teléfono</label>
+          <input id="tel" name="tel" type="tel" autocomplete="tel" required>
+        </p>
+        <p class="campo">
+          <label for="libro">Qué buscas</label>
+          <textarea id="libro" name="libro" rows="3" required>Un libro de poesía en galego para regalar, que no sea muy difícil</textarea>
+        </p>
+        <button class="boton boton--rojo" type="submit" data-iman>Enviar el encargo</button>
+        <p class="formulario__estado" data-encargo-estado role="status"></p>
+        <p class="formulario__demo">Formulario de muestra: no envía nada a ningún sitio ni guarda lo que escribas.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ══════════ GENTE Y VOCES ══════════ -->
+  <section class="gente" id="gente" aria-labelledby="t-gente">
+    <div class="seccion__cabeza">
+      <p class="indice">05 — Quién atiende</p>
+      <h2 id="t-gente" data-linea>Dos personas y una escalera</h2>
+    </div>
+
+    <ul class="fichas">
+      <li>
+        <h3>Olalla Cebreiro</h3>
+        <p class="fichas__papel">Librera · narrativa y galego</p>
+        <p>Abrió la librería en 2014 después de doce años en una distribuidora. Es quien
+        decide qué entra en la mesa y quien lleva el club de lectura.</p>
+      </li>
+      <li>
+        <h3>Brais Ferradás</h3>
+        <p class="fichas__papel">Librero · cómic, infantil y encargos</p>
+        <p>Lleva los encargos y la sección infantil. Tiene la habilidad de encontrar un
+        libro con tres datos vagos y media portada recordada.</p>
+      </li>
+    </ul>
+
+    <ul class="voces">
+      <li>
+        <blockquote><p>«Entré a por un regalo y salí con dos libros y una recomendación apuntada en un papel. Todavía guardo el papel.»</p></blockquote>
+        <p class="voces__firma">Marisa C. · clienta de los sábados</p>
+      </li>
+      <li>
+        <blockquote><p>«Pedí un libro descatalogado sin muchas esperanzas y me llamaron a los cuatro días. Lo habían encontrado en un almacén de Vigo.»</p></blockquote>
+        <p class="voces__firma">Anxo R. · del club de lectura</p>
+      </li>
+      <li>
+        <blockquote><p>«Mi hija va sola a la alfombra de infantil y se sienta a leer. Eso, para mí, es toda la reseña que hace falta.»</p></blockquote>
+        <p class="voces__firma">Teresa V. · vecina de la plaza</p>
+      </li>
+    </ul>
+    <p class="aviso">Personas y opiniones inventadas para esta demostración. No proceden de ninguna plataforma de reseñas.</p>
+  </section>
+
+  <!-- ══════════ VISITA ══════════ -->
+  <section class="visita" id="visita" aria-labelledby="t-visita">
+    <div class="seccion__cabeza">
+      <p class="indice">06 — Visítanos</p>
+      <h2 id="t-visita" data-linea>Praza do Cuadrante, 2</h2>
+    </div>
+
+    <div class="visita__rejilla">
+      <div class="donde">
+        <p class="donde__estado" data-estado>Comprobando el horario…</p>
+        <address>
+          Praza do Cuadrante, 2 · bajo<br>
+          27001 Lugo<br>
+          <a href="tel:+34982000018">982 00 00 18</a><br>
+          <a href="mailto:hola@cuadratin.example">hola@cuadratin.example</a>
+        </address>
+        <dl class="horario" data-horario>
+          <div data-dias="1,2,3,4,5"><dt>Lunes a viernes</dt><dd>10:00–14:00 · 17:00–20:30</dd></div>
+          <div data-dias="6"><dt>Sábado</dt><dd>10:30–14:00</dd></div>
+          <div data-dias="0"><dt>Domingo</dt><dd>Cerrado</dd></div>
+        </dl>
+        <p class="donde__nota">
+          En la plaza, con la puerta a ras de suelo. Hay un banco fuera donde la gente se
+          sienta a empezar el libro antes de irse, y no nos importa.
+        </p>
+      </div>
+
+      <div class="mapa" data-mapa>
+        <button class="boton boton--crema" type="button" data-mapa-boton>Cargar el mapa de Google</button>
+        <p class="mapa__aviso">El mapa se carga solo si lo pides: hasta entonces esta web no llama a ningún servidor de terceros.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pie">
+  <div class="pie__marca">
+    <svg class="marca__icono" viewBox="0 0 34 34" aria-hidden="true" focusable="false">
+      <rect x="3" y="4" width="7" height="26" rx="1.5" fill="currentColor"/>
+      <rect x="12" y="8" width="6" height="22" rx="1.5" fill="none" stroke="currentColor" stroke-width="2.4"/>
+      <rect x="20" y="6" width="10" height="24" rx="1.5" fill="none" stroke="currentColor" stroke-width="2.4" transform="rotate(9 25 18)"/>
+    </svg>
+    <p>Librería Cuadratín · Praza do Cuadrante, 2 · Lugo</p>
+  </div>
+  <nav class="pie__nav" aria-label="Enlaces del pie">
+    <ul>
+      <li><a href="#mesa">La mesa</a></li>
+      <li><a href="#club">Club de lectura</a></li>
+      <li><a href="#encargos">Encargos</a></li>
+      <li><a href="legal.html">Aviso legal y privacidad</a></li>
+    </ul>
+  </nav>
+  <p class="pie__sello">
+    <strong>Sitio de demostración.</strong> Librería Cuadratín es un negocio ficticio; los
+    datos, precios, personas y opiniones son de muestra. Los títulos, autores y sellos
+    editoriales que aparecen están inventados y las portadas están dibujadas para esta
+    plantilla: no existe ninguno de esos libros. Ningún dato de esta página corresponde a
+    un negocio real.
+  </p>
+</footer>
+
+<div class="cookie-banner" data-cookies hidden>
+  <p>Esta web usa una única cookie técnica para recordar que has visto este aviso. No hay analítica, ni seguimiento, ni cookies de terceros: el mapa de Google solo se carga si pulsas el botón.</p>
+  <div class="cookie-banner__acciones">
+    <button class="boton boton--crema" type="button" data-cookies-ok>Entendido</button>
+    <a class="boton boton--linea" href="legal.html#cookies">Leer más</a>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>

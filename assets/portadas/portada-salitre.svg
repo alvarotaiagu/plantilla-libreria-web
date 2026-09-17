@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 470" role="img" aria-label="Portada inventada de «A hora do salitre», de Uxía Nogueira, Edicións Marea">
+<title>A hora do salitre</title>
+<rect width="320" height="470" fill="#1F3A5F"/>
+<g><path d="M0 150 C60 134, 100 166, 160 150 S260 134, 320 150" fill="none" stroke="#D8624A" stroke-width="3" opacity="0.5"/><path d="M0 176 C60 160, 100 192, 160 176 S260 160, 320 176" fill="none" stroke="#D8624A" stroke-width="3" opacity="0.56"/><path d="M0 202 C60 186, 100 218, 160 202 S260 186, 320 202" fill="none" stroke="#D8624A" stroke-width="3" opacity="0.62"/><path d="M0 228 C60 212, 100 244, 160 228 S260 212, 320 228" fill="none" stroke="#D8624A" stroke-width="3" opacity="0.6799999999999999"/><path d="M0 254 C60 238, 100 270, 160 254 S260 238, 320 254" fill="none" stroke="#D8624A" stroke-width="3" opacity="0.74"/><path d="M0 280 C60 264, 100 296, 160 280 S260 264, 320 280" fill="none" stroke="#D8624A" stroke-width="3" opacity="0.8"/><path d="M0 306 C60 290, 100 322, 160 306 S260 290, 320 306" fill="none" stroke="#D8624A" stroke-width="3" opacity="0.86"/></g>
+<rect x="0" y="0" width="320" height="128" fill="#1F3A5F"/>
+<line x1="24" y1="128" x2="296" y2="128" stroke="#E9D9B8" stroke-width="2" opacity="0.6"/>
+<text x="24" y="52" fill="#E9D9B8" font-family="Familjen Grotesk, Trebuchet MS, sans-serif" font-size="27" font-weight="700" letter-spacing="-0.5">
+  <tspan x="24" dy="0">A hora do salitre</tspan>
+</text>
+<text x="24" y="112" fill="#E9D9B8" font-family="Courier Prime, Courier New, monospace" font-size="14" opacity="0.85">Uxía Nogueira</text>
+<text x="24" y="444" fill="#E9D9B8" font-family="Courier Prime, Courier New, monospace" font-size="12" opacity="0.7" letter-spacing="1.5">EDICIÓNS MAREA</text>
+</svg>

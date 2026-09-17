@@ -1,0 +1,13 @@
+{
+  "name": "Librería Cuadratín (demostración)",
+  "short_name": "Cuadratín",
+  "description": "Plantilla de demostración para librería. Negocio ficticio.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#23261F",
+  "theme_color": "#23261F",
+  "lang": "es",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
