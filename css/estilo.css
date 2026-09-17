@@ -24,7 +24,9 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+/* `clip` y no `hidden`: la balda es más ancha que la pantalla a propósito y,
+   sin esto, el móvil ensancha el viewport entero para que quepa. */
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; }
 
 body {
   margin: 0;
@@ -134,7 +136,12 @@ section[id] { scroll-margin-top: clamp(4.5rem, 10vh, 6rem); }
 .hero__entrada { color: var(--crema-70); max-width: 52ch; font-size: 1.05em; }
 .hero__acciones { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 2rem; }
 
-.balda { margin: 0 calc(var(--marco) * -1); padding: 0 clamp(0.5rem, 2vw, 2rem); }
+.balda {
+  margin: 0 calc(var(--marco) * -1);
+  padding: 0 clamp(0.5rem, 2vw, 2rem);
+  overflow: hidden;            /* la fila de lomos se recorta aquí */
+  max-width: 100vw;
+}
 .balda__lomos {
   list-style: none; margin: 0; padding: 0 0 0 0.6rem;
   display: flex; align-items: flex-end; gap: 3px;
