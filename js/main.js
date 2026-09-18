@@ -26,6 +26,33 @@
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
+  /* ── Cortina de entrada ────────────────────────────────────────────────
+     Obligatoria (§5 del pliego) y con RETIRADA GARANTIZADA: se quita
+     siempre —sin GSAP, con movimiento reducido, o si algo falla a mitad—,
+     porque si se queda tapa la página entera. `ESPERA` es lo que el hero
+     aguanta antes de entrar, para que el relevo sea limpio.
+     ────────────────────────────────────────────────────────────────────── */
+  var ESPERA = 0;
+  (function cortina() {
+    var el = document.querySelector('[data-cortina]');
+    if (!el) return;
+    var fuera = false;
+    function quitar() { if (fuera) return; fuera = true; el.hidden = true; }
+    if (!motion) { quitar(); return; }
+    ESPERA = 1.45;
+
+    var lomos = Array.prototype.slice.call(el.querySelectorAll('.cortina__lomo'));
+    var centro = el.querySelector('.cortina__centro');
+    gsap.set(centro, { opacity: 0, y: 10 });
+    var tl = gsap.timeline({ onComplete: quitar });
+    tl.to(centro, { opacity: 1, y: 0, duration: 0.45, ease: 'power2.out' })
+      .to(lomos, { y: 14, duration: 0.3, ease: 'power2.inOut', stagger: 0.025 }, '-=0.2')
+      .to(centro, { opacity: 0, duration: 0.28, ease: 'power1.in' }, '+=0.06')
+      .to(lomos, { yPercent: -101, duration: 0.8, ease: 'expo.inOut', stagger: 0.05 }, '-=0.16');
+    setTimeout(quitar, 5000);   // red de seguridad: pase lo que pase, se va
+  })();
+
+
   function alEntrar(el, hacer, margen) {
     if (!('IntersectionObserver' in window)) { hacer(); return; }
     var io = new IntersectionObserver(function (ents) {
@@ -89,7 +116,7 @@
       gsap.set(lomos, { yPercent: 108 });
       gsap.to(lomos, {
         yPercent: 0, duration: 0.7, ease: 'power3.out',
-        stagger: { each: 0.028, from: 'start' }, delay: 0.25
+        stagger: { each: 0.028, from: 'start' }, delay: ESPERA + 0.25
       });
     }
   })();
@@ -116,7 +143,7 @@
       // `y: 0` explícito: GSAP leería un translate heredado del CSS como píxeles
       gsap.set(dentro, { y: 0, yPercent: 105, opacity: 0 });
       var anim = { yPercent: 0, opacity: 1, duration: 0.8, ease: 'power3.out' };
-      if (el.closest('.hero')) gsap.to(dentro, Object.assign({ delay: 0.2 }, anim));
+      if (el.closest('.hero')) gsap.to(dentro, Object.assign({ delay: ESPERA + 0.2 }, anim));
       else alEntrar(el, function () { gsap.to(dentro, anim); });
     });
   }
@@ -133,7 +160,7 @@
         var ajustes = {
           opacity: 1, y: 0, duration: 0.7, ease: 'power2.out',
           startAt: { y: par[1] },
-          delay: enHero ? 0.45 + i * 0.08 : (i % 4) * 0.05
+          delay: enHero ? ESPERA + 0.45 + i * 0.08 : (i % 4) * 0.05
         };
         if (enHero) gsap.to(el, ajustes);
         else alEntrar(el, function () { gsap.to(el, ajustes); });
